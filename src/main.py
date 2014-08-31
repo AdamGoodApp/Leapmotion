@@ -22,6 +22,7 @@ class SampleListener(Leap.Listener):
   def on_frame(self, controller):
     frame = controller.frame()
     if len(frame.hands) == 0: print 'No Hands'
+    number_of_hands = len(frame.hands)
 
     def MoveArm(Duration, ArmCmd):
       RoboArm = usb.core.find(idVendor=0x1267, idProduct=0x000)
