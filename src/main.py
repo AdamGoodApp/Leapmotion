@@ -19,14 +19,27 @@ class SampleListener(Leap.Listener):
   def on_frame(self, controller):
     frame = controller.frame()
     if len(frame.hands) == 0: print 'No Hands'
-    
+
     for hand in frame.hands:
-      if hand.palm_position[0] > 100:
+      xaxis = hand.palm_position[0]
+      yaxis = hand.palm_position[1]
+      zaxis = hand.palm_position[2]
+
+      if xaxis > 100:
         print 'Moving Right'
-      elif hand.palm_position[0] < -100:
+      elif xaxis < -100:
         print 'Moving Left'
+      elif yaxis > 300:
+        print 'Moving Up'
+      elif yaxis < 200:
+        print 'Moving Down'
+      elif zaxis > 80:
+        print 'Moving Back'
+      elif zaxis < 0:
+        print 'Moving Forward'
       else:
         print 'Stopped Moving'
+
       
       
 
